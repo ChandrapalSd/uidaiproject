@@ -13,7 +13,7 @@ Team members:
  The code can also be downloaded from this link : https://calculators.ml/static/uidaiproject.zip
 
 Note : All secret keys and authentication tokens are in this respository , but due to this twilio revoked the sms api auth code thats why sms will not be sent to landlord mobile .<br/>
-For running this code you have to also download jdk8 in your system and also place [otpClient](https://github.com/uidaitc/otpapiclient) and [Ekyc](https://github.com/uidaitc/ekycapiclient) apps in the **/webresource/app/** directory and rsa keys and certs in the **/webresource/keys** directory.
+For running this code you have to also download jdk8 in your system and also place [Modified otpClient](https://github.com/ChandrapalSd/otpapiclient) and [Modified Ekyc Api Client](https://github.com/ChandrapalSd/ekycapiclient) apps in the **/webresource/app/** directory and rsa keys and certs in the **/webresource/keys** directory.
 
 [ProjectDemo](https://github.com/ChandrapalSd/uidaiproject/tree/main/ProjectDemo) contains demo videos.
 Demo videos can also be viewed on youtube , 
