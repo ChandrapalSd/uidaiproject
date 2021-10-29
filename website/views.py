@@ -117,7 +117,12 @@ def updateAddr():
                     db.session.delete(user)
                     db.session.commit()
                     msg += f"{new_update.id} for approving or rejecting address update."
-                    sendSMS(request.form.get('lmo'),msg)
+                    try:
+                        sendSMS(request.form.get('lmo'),msg)
+                    except:
+                        pass
+                    finally:
+                        pass
                     flash("Update request submited.", category='success')
                     flash(f'Your update request id is "{new_update.id}". Save it for future use.', category='success')
                     flash(f'Sms notification to landlord has been sent .', category='success')
