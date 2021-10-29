@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<br>
+<h3 class="mx-3">Approve address update request</h3>
+
+<form>
+
+    <div class="d-flex flex-column mx-3 align-items-baseline" style="max-width: 25rem">
+        <label for="Id" class="col-form-label"><strong>Update request Id <span class="text-danger">*</span></strong></label>
+        <input type="text" required class="form-control" name="Id" id="Id" placeholder="Enter request Id" >
+        <br>
+        <button type="submit" id="submit" class="btn btn-primary">Next</button>
+    </div>
+        
+</form>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='approveaddr1.js') }}"></script>
+{% endblock%}

@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<br>
+<h2 class="mx-3" id="vid-display"></h2>
+<h3 class="mx-3">Retrieve Virtual id / VID</h3>
+
+
+
+<div class="d-flex flex-column mx-3 align-items-baseline" style="max-width: 25rem">
+    <label for="uid" class="col-form-label"><strong>Aadhar number <span class="text-danger">*</span></strong></label>
+    <input type="text" required pattern="^[0-9]{12}$"class="form-control" name="uid" id="uid" placeholder="Enter UID" >
+
+    <label for="captcha" class="col-form-label"><strong>Captcha<span class="text-danger">*</span></strong></label>
+    <input type="text" required pattern="^[a-zA-Z0-9]{6}"class="form-control" name="captcha" id="captcha" placeholder="Enter text shown below" >
+    <br>
+    <div >
+        <img class="border border-dark" src="" id="captcha-img" alt="Captcha image">
+        <p class="text-secondary m-0"><small>Click image to reload</small></p>
+    </div>
+    <br>
+
+    <label for="mobile" id="mobilelabel" hidden class="col-form-label"><strong>Mobile number <span class="text-danger">*</span></strong></label>
+    <input type="text" hidden pattern="^[0-9]{10}$"class="form-control" name="mobile" id="mobile" placeholder="Enter MO. No." >
+
+    <label for="otp" id="otplabel" hidden class="col-form-label"><strong>Otp <span class="text-danger">*</span></strong></label>
+    <input type="text" hidden pattern="^[0-9]{6}$"class="form-control" name="otp" id="otp" placeholder="Enter OTP" >
+    <br>
+    <input type="text" id="txn-id" value="0" hidden>
+    <button type="submit" class="btn btn-primary" id="submit-btn">Next</button>
+</div>
+
+
+{% endblock %}
+
+{% block script %}<script type="text/javascript" src="{{ url_for('static',filename='genvid.js') }}"></script>
+
+{% endblock%}

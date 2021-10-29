@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<br>
+<h3 class="mx-3">Approve address update request</h3>
+<br>
+<h5 class="mx-3">Requester name : <span class="font-weight-bold">{{name}}</span></h5>
+<h5 class="mx-3">Requester UID/VID : <span class="font-weight-bold">{{uid}}</span></h5>
+<h5 class="mx-3">Lanlord UID/VID : <span class="font-weight-bold">{{luid}}</span></h5>
+<h5 class="mx-3">Address you are going to approve : <span class="font-weight-bold" id="new_address"></span></h5>
+<br>
+
+<form >
+
+    <div class="d-flex flex-column mx-3 align-items-baseline" style="max-width: 25rem">
+        <label for="uvid" id="uvidlabel" class="col-form-label "  ><strong>Landlord's Aadhar Number / Virtual Id <span class="text-danger">*</span></strong></label>
+        <input type="text" pattern="^(\d{12}|\d{16})$" class="form-control" name="uvid" id="uvid" placeholder="Landlord UID/VID. Same as above" >
+
+        <label for="ekycPerm" id="ekycPermlabel" class="col-form-label " ><strong>EKyc permission<span class="text-danger">*</span></strong></label>
+        <input type="checkbox" required name="ekycPerm" id="ekycPerm">
+
+        <input type="text" value="" name="txnId" id="txnId" hidden>
+        <input type="text" value="1" name="type" id="type" hidden>
+<div id="approve-div" hidden>
+    
+            <label class="col-form-label"><strong>Do you agree to give {{name}} your address access ?</strong></label>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="yes" required name="approve" class="custom-control-input" value="y">
+                <label class="custom-control-label" id="yeslabel" for="yes">Yes</label>
+              </div>
+              <div class="custom-control custom-radio">
+                  <input type="radio" id="no" name="approve" class="custom-control-input" value="n">
+                  <label class="custom-control-label" id="nolabel" for="no">No</label>
+            </div>
+            <label for="status" id="statuslabel" class="col-form-label "><strong>Reason<span class="text-danger">*</span> (if rejected) </strong></label>
+            <input type="text" pattern="^.{10,}$" class="form-control" name="status" id="status" placeholder="Ex: not my tenant, Different address" >
+</div>
+        
+        <label for="otp" id="otplabel" class="col-form-label " hidden><strong>OTP to mobile<span class="text-danger">*</span></strong></label>
+        <input type="text" hidden pattern="^[0-9]{6}$" class="form-control" name="otp" id="otp" placeholder="Enter otp" >
+
+        <br>
+        <div id="message-div" ></div>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Generate OTP</button>
+    </div>
+        
+</form>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='approveaddr.js') }}"></script>
+{% endblock%}

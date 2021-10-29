@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<br>
+<h3 class="mx-3">Approve update status</h3>
+
+<form >
+
+    <div class="d-flex flex-column mx-3 align-items-baseline" style="max-width: 25rem">
+        <label for="id" class="col-form-label"><strong>Update request Id <span class="text-danger">*</span></strong></label>
+        <input type="text" required class="form-control" name="id" id="id" placeholder="Enter request Id" >
+
+        <br>
+        <button type="submit" id="submitBtn" class="btn btn-primary">Next</button>
+    </div>
+        
+</form>
+{% endblock %}
+{% block script %}
+<script type="text/javascript" >
+var id = document.getElementById('id');
+document.getElementById('submitBtn').addEventListener('click', function(e){
+    e.preventDefault();
+    var regex = new RegExp("^[0-9]*$");
+    let res = regex.test(id.value);
+    if (id.value && id.value>0 && res) {
+        window.location.href =  window.location.href+'/'+id.value;
+    }
+    else{
+        alert(`Id must be integer and greater than 0`);
+    }
+} );
+</script>
+{% endblock%}

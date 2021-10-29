@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<br>
+<h3 class="mx-3">Update address</h3>
+
+<form method="POST" id="update-form">
+
+    <div class="d-flex flex-column mx-3 align-items-baseline" style="max-width: 25rem">
+        <label for="uvid" class="col-form-label " ><strong>Aadhar Number / Virtual Id <span class="text-danger">*</span></strong></label>
+        <input type="text" required pattern="^(\d{12}|\d{16})$" class="form-control" name="uvid" id="uvid" placeholder="Aadhar number" >
+
+        <label for="otp" id="otplabel" class="col-form-label " hidden><strong>OTP to mobile<span class="text-danger">*</span></strong></label>
+        <input type="text" hidden pattern="^[0-9]{6}$" class="form-control" name="otp" id="otp" placeholder="Enter otp" >
+
+        <label for="ekycPerm" id="ekycPermlabel" class="col-form-label " ><strong>EKyc permission<span class="text-danger">*</span></strong></label>
+        <input type="checkbox" required name="ekycPerm" id="ekycPerm">
+        
+        <label for="luvid" id="luvidlabel" class="col-form-label " hidden><strong>Landlord's Aadhar Number / Virtual Id <span class="text-danger">*</span></strong></label>
+        <input type="text" hidden pattern="^(\d{12}|\d{16})$" class="form-control" name="luvid" id="luvid" placeholder="Landlord Aadhar number" >
+        
+        <label for="lmo" id="lmolabel" class="col-form-label " hidden><strong>Landlord's mobile Number <span class="text-danger">*</span></strong></label>
+        <input type="text"  hidden pattern="^[0-9]{10}$" class="form-control" name="lmo" id="lmo" placeholder="Landlord mobile number" >
+
+        <label for="address" id="addresslabel" class="col-form-label " hidden><strong>New Address<span class="text-danger">*</span></strong></label>
+        <input type="text" hidden class="form-control" name="address" id="address" placeholder="Landlord mobile number" >
+
+        <p id="address-hint" hidden>Address format : location village/city district state country pincode</p>
+        <input type="text" value="1" name="type" id="type" hidden>
+        <input type="text" value="" name="txnId" id="txnId" hidden>
+
+        
+        <br>
+        <div id="message-div" ></div>
+        <button type="submit" id="submit-btn" class="btn btn-primary">Generate OTP</button>
+    </div>
+        
+</form>
+
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='updateaddr.js') }}"></script>
+{% endblock%}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content%}
+<br>
+<h3 class="mx-3">Approve update status</h3>
+
+<div class="mx-3">
+    <div id="disp1" hidden>
+        <p>Dear, <span id="name"></span> landlord approval is pending.</p>
+        <p>Share this <a href="/approve_addr/{{id}}" id="link">link</a> with lordlord.</p>
+    </div>
+    <div id="disp2" hidden>
+        <p>Dear, <span id="name"></span> landlord rejected your update request.</p>
+        <p>Rejection reason : <span id="reason"></span></p>
+    </div>
+    <div id="disp3" hidden>
+        <p>Dear, <span id="name"></span> landlord approved your update request.</p>
+        <p>New address will soon be added to you Aadhar.</a></p>
+    </div>
+</div>
+
+<div class="d-flex flex-column mx-3 align-items-baseline" id="form-div" style="max-width: 25rem">
+    <label for="uid" class="col-form-label"><strong>Aadhar number (UID) of requester <span class="text-danger">*</span></strong></label>
+    <input type="text" required class="form-control" name="uid" id="uid" placeholder="Enter UID" >
+    <br>
+    <button type="submit" id="submitBtn" class="btn btn-primary">Next</button>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{{ url_for('static',filename='status.js') }}"></script>
+{% endblock%}
